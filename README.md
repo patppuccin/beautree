@@ -35,7 +35,7 @@ No subcommands. No magic. A single static binary you can alias to `tree` and for
 **Linux / macOS**
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/patppuccin/beautree/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/patppuccin/beautree/main/scripts/install.sh | bash
 ```
 
 **Windows (PowerShell)**
