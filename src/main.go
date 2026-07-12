@@ -135,7 +135,7 @@ func main() {
 	}
 
 	var renderr error
-	if cfg.format == "json" {
+	if cfg.Format == "json" {
 		renderr = renderJSONTree(absPath, cfg, out)
 	} else {
 		renderr = renderCharTree(absPath, cfg, out)

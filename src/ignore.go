@@ -26,7 +26,7 @@ func newIgnoreMatcher(cfg config) *ignoreMatcher {
 		cfg:   cfg,
 		cache: make(map[string][]ignorePattern),
 	}
-	for _, glob := range cfg.ignore {
+	for _, glob := range cfg.Ignore {
 		m.patterns = append(m.patterns, ignorePattern{
 			pattern:  glob,
 			anchored: false,
@@ -85,7 +85,7 @@ func loadGitignore(dir string) []ignorePattern {
 }
 
 func (m *ignoreMatcher) match(dir string, entry os.DirEntry) bool {
-	if m.cfg.noIgnore {
+	if m.cfg.NoIgnore {
 		return false
 	}
 

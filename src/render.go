@@ -68,7 +68,7 @@ func newTreeCharsASCII() treeChars {
 }
 
 func shouldUseASCII(cfg config, out io.Writer) bool {
-	if cfg.format == "ascii" {
+	if cfg.Format == "ascii" {
 		return true
 	}
 	if os.Getenv("TERM") == "dumb" {
@@ -142,7 +142,7 @@ func renderCharTree(path string, cfg config, out io.Writer) error {
 		return err
 	}
 
-	if !cfg.noSummary {
+	if !cfg.NoSummary {
 		fmt.Fprintf(bw, "\nfound %s and %s\n",
 			styleFooterHighlight.Sprintf("%d directories", state.dirCount),
 			styleFooterHighlight.Sprintf("%d files", state.fileCount),
@@ -153,7 +153,7 @@ func renderCharTree(path string, cfg config, out io.Writer) error {
 }
 
 func walk(path string, depth int, isLastStack []bool, state *walkState) error {
-	if state.cfg.depth > 0 && depth >= state.cfg.depth {
+	if state.cfg.Depth > 0 && depth >= state.cfg.Depth {
 		return nil
 	}
 
@@ -168,10 +168,10 @@ func walk(path string, depth int, isLastStack []bool, state *walkState) error {
 		if name == ".git" {
 			continue
 		}
-		if !state.cfg.all && strings.HasPrefix(name, ".") {
+		if !state.cfg.All && strings.HasPrefix(name, ".") {
 			continue
 		}
-		if state.cfg.dirsOnly && !entry.IsDir() {
+		if state.cfg.DirsOnly && !entry.IsDir() {
 			continue
 		}
 		if state.matcher.match(path, entry) {
@@ -242,7 +242,7 @@ func walk(path string, depth int, isLastStack []bool, state *walkState) error {
 				line += styleSymlink.Sprint(state.chars.SymlinkPointer + symlinkTarget)
 			}
 		}
-		if state.cfg.size && !entry.IsDir() {
+		if state.cfg.Size && !entry.IsDir() {
 			line += styleSize.Sprintf(" (%s)", humanSize(linfo.Size()))
 		}
 
@@ -285,10 +285,10 @@ func dirHasVisibleChildren(path string, state *walkState) bool {
 		if e.Name() == ".git" {
 			continue
 		}
-		if !state.cfg.all && strings.HasPrefix(e.Name(), ".") {
+		if !state.cfg.All && strings.HasPrefix(e.Name(), ".") {
 			continue
 		}
-		if state.cfg.dirsOnly && !e.IsDir() {
+		if state.cfg.DirsOnly && !e.IsDir() {
 			continue
 		}
 		if state.matcher.match(path, e) {
@@ -339,7 +339,7 @@ func buildJSONTree(path string, depth int, cfg config, matcher *ignoreMatcher) (
 		entry.Type = "dir"
 		entry.Size = 0
 
-		if cfg.depth > 0 && depth >= cfg.depth {
+		if cfg.Depth > 0 && depth >= cfg.Depth {
 			return entry, nil
 		}
 
@@ -353,10 +353,10 @@ func buildJSONTree(path string, depth int, cfg config, matcher *ignoreMatcher) (
 			if name == ".git" {
 				continue
 			}
-			if !cfg.all && strings.HasPrefix(name, ".") {
+			if !cfg.All && strings.HasPrefix(name, ".") {
 				continue
 			}
-			if cfg.dirsOnly && !de.IsDir() {
+			if cfg.DirsOnly && !de.IsDir() {
 				continue
 			}
 			if matcher.match(path, de) {

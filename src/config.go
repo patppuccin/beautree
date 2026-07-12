@@ -12,14 +12,14 @@ import (
 const envPrefix = "BEAUTREE_"
 
 type config struct {
-	depth     int      `toml:"depth"`      // Max depth to recurse, 0 = unlimited
-	dirsOnly  bool     `toml:"dirs_only"`  // Show directories only, skip files
-	all       bool     `toml:"all"`        // Include hidden entries (dotfiles)
-	size      bool     `toml:"size"`       // Show human-readable size beside each entry
-	ignore    []string `toml:"ignore"`     // Glob patterns to exclude, stacks with .gitignore
-	noIgnore  bool     `toml:"no_ignore"`  // Disable .gitignore parsing
-	noSummary bool     `toml:"no_summary"` // Disable the summary footer (N dirs, N files)
-	format    string   `toml:"format"`     // Output format: unicode | ascii | json
+	Depth     int      `toml:"depth"`      // Max depth to recurse, 0 = unlimited
+	DirsOnly  bool     `toml:"dirs_only"`  // Show directories only, skip files
+	All       bool     `toml:"all"`        // Include hidden entries (dotfiles)
+	Size      bool     `toml:"size"`       // Show human-readable size beside each entry
+	Ignore    []string `toml:"ignore"`     // Glob patterns to exclude, stacks with .gitignore
+	NoIgnore  bool     `toml:"no_ignore"`  // Disable .gitignore parsing
+	NoSummary bool     `toml:"no_summary"` // Disable the summary footer (N dirs, N files)
+	Format    string   `toml:"format"`     // Output format: unicode | ascii | json
 }
 
 func configPath() string {
@@ -54,57 +54,57 @@ func resolveConfig() config {
 	// layer 2: env vars override file
 	if v := os.Getenv(envPrefix + "DEPTH"); v != "" {
 		if i, err := strconv.Atoi(v); err == nil {
-			cfg.depth = i
+			cfg.Depth = i
 		}
 	}
 	if v := os.Getenv(envPrefix + "DIRS_ONLY"); v != "" {
 		if b, err := strconv.ParseBool(v); err == nil {
-			cfg.dirsOnly = b
+			cfg.DirsOnly = b
 		}
 	}
 	if v := os.Getenv(envPrefix + "ALL"); v != "" {
 		if b, err := strconv.ParseBool(v); err == nil {
-			cfg.all = b
+			cfg.All = b
 		}
 	}
 	if v := os.Getenv(envPrefix + "SIZE"); v != "" {
 		if b, err := strconv.ParseBool(v); err == nil {
-			cfg.size = b
+			cfg.Size = b
 		}
 	}
 	if v := os.Getenv(envPrefix + "NO_IGNORE"); v != "" {
 		if b, err := strconv.ParseBool(v); err == nil {
-			cfg.noIgnore = b
+			cfg.NoIgnore = b
 		}
 	}
 	if v := os.Getenv(envPrefix + "NO_SUMMARY"); v != "" {
 		if b, err := strconv.ParseBool(v); err == nil {
-			cfg.noSummary = b
+			cfg.NoSummary = b
 		}
 	}
 	if v := os.Getenv(envPrefix + "FORMAT"); v != "" {
-		cfg.format = v
+		cfg.Format = v
 	}
 
 	// layer 3: CLI flags override env, only if explicitly passed
 	pflag.Visit(func(f *pflag.Flag) {
 		switch f.Name {
 		case "depth":
-			cfg.depth = flagTreeDepth
+			cfg.Depth = flagTreeDepth
 		case "dirs-only":
-			cfg.dirsOnly = flagDirsOnly
+			cfg.DirsOnly = flagDirsOnly
 		case "all":
-			cfg.all = flagIncludeAll
+			cfg.All = flagIncludeAll
 		case "size":
-			cfg.size = flagShowSize
+			cfg.Size = flagShowSize
 		case "ignore":
-			cfg.ignore = append(cfg.ignore, flagIgnore...)
+			cfg.Ignore = append(cfg.Ignore, flagIgnore...)
 		case "no-ignore":
-			cfg.noIgnore = flagNoIgnore
+			cfg.NoIgnore = flagNoIgnore
 		case "no-summary":
-			cfg.noSummary = flagNoSummary
+			cfg.NoSummary = flagNoSummary
 		case "format":
-			cfg.format = flagFormat
+			cfg.Format = flagFormat
 		}
 	})
 
