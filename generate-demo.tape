@@ -1,17 +1,19 @@
-Output assets/demo.gif
+Output assets/beautree-demo.gif
 
 Set FontFamily "JetBrainsMono Nerd Font"
-Set FontSize 14
+Set FontSize 16
 Set LetterSpacing 0
 Set LineHeight 1.2
 Set Width 1000
 Set Height 800
-Set Theme "OneDark"
+Set Theme "GitHub Dark"
 Set Padding 16
 Set Framerate 30
 Set Shell zsh
 Set WindowBar Colorful
 Set BorderRadius 16
+Set Margin 16
+Set MarginFill "#61AFEF"
 
 Require beautree
 

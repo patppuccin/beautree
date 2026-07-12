@@ -1,12 +1,12 @@
 <div align="center">
-<img src="assets/banner.png" alt="beautree" width="600" /><br />
+<img src="assets/beautree-banner.svg" alt="beautree" width="600" /><br />
 
 ![Version](https://img.shields.io/github/v/release/patppuccin/beautree?style=flat-square&color=e5c07b&labelColor=1e1e2e)
 ![License](https://img.shields.io/github/license/patppuccin/beautree?style=flat-square&color=61afef&labelColor=1e1e2e)
 ![Build](https://img.shields.io/github/actions/workflow/status/patppuccin/beautree/release.yml?style=flat-square&color=98c379&labelColor=1e1e2e)
 ![Go version](https://img.shields.io/github/go-mod/go-version/patppuccin/beautree?style=flat-square&color=56b6c2&labelColor=1e1e2e)
 
-<img src="assets/demo.gif" alt="beautree demo" width="900" />
+<img src="assets/beautree-demo.gif" alt="beautree demo" width="900" />
 </div>
 
 ## About
