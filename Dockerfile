@@ -1,3 +1,7 @@
 FROM scratch
-COPY beautree /beautree
+
+ARG TARGETPLATFORM
+
+COPY $TARGETPLATFORM/beautree /beautree
+
 ENTRYPOINT ["/beautree"]
