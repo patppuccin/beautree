@@ -1,0 +1,32 @@
+# Binaries
+beautree
+beautree.exe
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test artifacts
+*.test
+*.out
+coverage.*
+*.coverprofile
+profile.
+demo
+
+# Go workspace
+go.work
+go.work.sum
+
+# Build output
+dist/
+bin/
+
+# Editor/IDE artifacts
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
