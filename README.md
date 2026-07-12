@@ -18,11 +18,11 @@ No subcommands. No magic. A single static binary you can alias to `tree` and for
 **What it does:**
 
 - Unicode box-drawing connectors (`╭─ ├─ ╰─`) with automatic ASCII fallback on dumb terminals and pipes
-- Reads nested `.gitignore` files at every level — negation patterns, dir-only rules, all of it
-- Detects working and broken symlinks, shows targets inline
+- Reads nested `.gitignore` files at every level, including negation patterns and dir-only rules
+- Detects working and broken symlinks and shows their targets inline
 - Identifies named pipes and sockets
-- JSON output for piping into other tools
-- Three-layer config: CLI flags → env vars → `config.toml`
+- Emits JSON output for piping into other tools
+- Supports a three-layer config system: CLI flags, env vars, and `config.toml`
 
 **What it doesn't do:**
 
@@ -30,29 +30,21 @@ No subcommands. No magic. A single static binary you can alias to `tree` and for
 - No global ignore files, no hidden magic
 - No subcommands
 
----
-
 ## Installation
 
 **Linux / macOS**
 
 ```sh
-curl -fsSL https://patppuccin.dev/beautree/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/patppuccin/beautree/main/scripts/install.sh | sh
 ```
 
 **Windows (PowerShell)**
 
 ```powershell
-irm https://patppuccin.dev/beautree/install.ps1 | iex
+irm https://raw.githubusercontent.com/patppuccin/beautree/main/scripts/install.ps1 | iex
 ```
 
-**Go install**
-
-```sh
-go install github.com/patppuccin/beautree/src@latest
-```
-
-**Manual** — grab a binary from [releases](https://github.com/patppuccin/beautree/releases) and drop it on your `PATH`.
+**Manual:** grab a binary from [releases](https://github.com/patppuccin/beautree/releases) and drop it on your `PATH`.
 
 **Alias to `tree`**
 
@@ -66,8 +58,6 @@ Set-Alias tree beautree
 # nushell
 alias tree = beautree
 ```
-
----
 
 ## Usage
 
@@ -92,8 +82,6 @@ beautree [path] [flags]
 | `--version`     | `-v`  | Print version                              |           |
 | `--help`        | `-h`  | Show help                                  |           |
 
-**Examples**
-
 ```sh
 # two levels deep
 beautree -L 2
@@ -104,7 +92,7 @@ beautree -da
 # exclude patterns
 beautree -I node_modules -I dist -I "*.log"
 
-# sizes
+# show sizes
 beautree --size
 
 # pipe to jq
@@ -114,11 +102,9 @@ beautree --format json | jq .
 beautree -o tree.txt
 ```
 
----
-
 ## Config
 
-Persistent preferences live at `~/.config/beautree/config.toml`. Respects `XDG_CONFIG_HOME`.
+Persistent preferences live at `~/.config/beautree/config.toml`. The `XDG_CONFIG_HOME` environment variable is respected if set.
 
 ```toml
 # ~/.config/beautree/config.toml
@@ -130,7 +116,7 @@ format     = "unicode"
 ignore     = ["node_modules", "dist", "*.log"]
 ```
 
-Env vars work too, prefixed with `BEAUTREE_`:
+Environment variables are also supported, prefixed with `BEAUTREE_`:
 
 ```sh
 BEAUTREE_DEPTH=3
@@ -138,16 +124,12 @@ BEAUTREE_FORMAT=ascii
 BEAUTREE_NO_SUMMARY=true
 ```
 
-Precedence: **CLI flags > env vars > config file**.
-
----
+**Precedence order**: `CLI flags > env vars > config file`
 
 ## Contributing
 
-Not accepting pull requests at this time, but issues are welcome — bug reports, feature requests, or just feedback. Open one [here](https://github.com/patppuccin/beautree/issues).
-
----
+Pull requests are not being accepted at this time, but issues are always welcome. Bug reports, feature requests, and general feedback can be submitted [here](https://github.com/patppuccin/beautree/issues).
 
 ## License
 
-[Apache-2.0](LICENSE)
+The project is released under the [Apache-2.0](LICENSE) license.
