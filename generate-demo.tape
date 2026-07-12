@@ -5,7 +5,7 @@ Set FontSize 16
 Set LetterSpacing 0
 Set LineHeight 1.2
 Set Width 1000
-Set Height 800
+Set Height 820
 Set Theme "GitHub Dark"
 Set Padding 16
 Set Framerate 30

@@ -38,7 +38,6 @@ create() {
 
     echo "$GITIGNORE" > "$ROOT/.gitignore"
 
-    touch "$ROOT/.hidden-config"
     touch "$ROOT/.env"
     touch "$ROOT/README.md"
     touch "$ROOT/definitely-not-production.toml"
