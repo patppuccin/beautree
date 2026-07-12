@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/beautree-banner.svg" alt="beautree" width="600" /><br />
+<img src="assets/beautree-banner.svg" alt="beautree" width="600" /><br /><br />
 
 ![Version](https://img.shields.io/github/v/release/patppuccin/beautree?style=flat-square&color=e5c07b&labelColor=1e1e2e)
 ![License](https://img.shields.io/github/license/patppuccin/beautree?style=flat-square&color=61afef&labelColor=1e1e2e)
