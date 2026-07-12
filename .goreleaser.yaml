@@ -46,7 +46,6 @@ dockers_v2:
       "org.opencontainers.image.revision": "{{ .FullCommit }}"
       "org.opencontainers.image.created": "{{ .Date }}"
       "org.opencontainers.image.source": "https://github.com/patppuccin/beautree"
-    dockerfile: Containerfile
     disable: false
 
 archives:
