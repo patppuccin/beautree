@@ -57,8 +57,6 @@ func versionString() string {
 }
 
 func main() {
-	os.Unsetenv("LS_COLORS")
-	os.Unsetenv("LSCOLORS")
 	pflag.CommandLine.SortFlags = false
 
 	pflag.IntVarP(&flagTreeDepth, "depth", "L", 0, "Max depth to recurse (0 = unlimited)")
